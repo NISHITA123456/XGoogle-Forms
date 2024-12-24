@@ -68,7 +68,7 @@ public class TestCases {
     public void testCase01() throws InterruptedException {
 
         driver.get("https://docs.google.com/forms/d/e/1FAIpQLSep9LTMntH5YqIXa5nkiPKSs283kdwitBBhXWyZdAS-e4CxBQ/viewform");
-                Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
          // Fill in "Crio Learner" in the 1st text box
         driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys("Crio Learner");
@@ -132,9 +132,10 @@ public class TestCases {
         Thread.sleep(1000);
         
          // Print the success message
-         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
          String successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Thanks for your response, Automation Wizard!']"))).getText();
-         System.out.println(successMessage);       
+         System.out.println(successMessage);   
+         System.out.println("Form submitted successfully.");    
     }
 
     @AfterTest
